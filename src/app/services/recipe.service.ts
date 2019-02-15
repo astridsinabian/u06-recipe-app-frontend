@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { RecipeSearchResult } from '../models/Recipe';
 
@@ -10,6 +10,8 @@ import { RecipeSearchResult } from '../models/Recipe';
 export class RecipeService {
 
   recipesUrl:string = 'http://api.yummly.com/v1/api/recipes?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6';
+
+  recipesSearchUrl: string = 'http://api.yummly.com/v1/api/recipes?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6&q=';
 
   constructor(private http:HttpClient) { }
 

@@ -20,6 +20,4 @@ export class RecipesDetailsComponent implements OnInit {
     this.recipeId = id;
   }
 
-
-
 }
