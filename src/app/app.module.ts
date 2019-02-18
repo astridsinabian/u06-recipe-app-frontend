@@ -8,11 +8,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
+import { ProfileComponent } from './users/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

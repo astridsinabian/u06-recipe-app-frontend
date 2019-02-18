@@ -34,10 +34,10 @@ export class RecipeListComponent implements OnInit {
   }
 
   search() {
-    let query = this.recipesUrl + '&q=' + this.searchString;
-    this.http.get(query).subscribe((result) => {
-      this.recipes = result.matches
-    });
+    // let query = this.recipesUrl + '&q=' + this.searchString;
+    // this.http.get(query).subscribe((result) => {
+    //   this.recipes = result.matches
+    // });
 
      }
 
