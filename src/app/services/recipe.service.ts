@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { RecipeSearchResult } from '../models/Recipe';
-import { jsonpCallbackContext } from '@angular/common/http/src/module';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,9 @@ export class RecipeService {
     login : 'http://recipe-app.test/api/login',
     register : 'http://recipe-app.test/api/register'
   }
+
+  private loggedInView = new BehaviorSubject<boolean>(this.loggedIn());
+  authStatus = this.loggedInView.asObservable();
 
   constructor(private http:HttpClient) { }
 
@@ -75,5 +78,11 @@ export class RecipeService {
   loggedIn() {
     return this.isValid();
   }
+
+  changeAuthStatus(value : boolean) {
+    this.loggedInView.next(value);
+  }
+
+  
 
 }

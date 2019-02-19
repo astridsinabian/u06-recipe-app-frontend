@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,13 +18,18 @@ export class RegisterComponent implements OnInit {
 
   public error = [];
 
-  constructor(private recipe: RecipeService) { }
+  constructor(private recipe: RecipeService, private router: Router) { }
 
   onSubmit() {
     this.recipe.register(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error)
     );
+  }
+
+  handleResponse(data) {
+    this.recipe.handle(data.access_token);
+    this.router.navigateByUrl('profile');
   }
 
   handleError(error) {

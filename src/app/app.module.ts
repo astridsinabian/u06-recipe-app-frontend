@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './users/login/login.component';
 import { RegisterComponent } from './users/register/register.component';
 import { ProfileComponent } from './users/profile/profile.component';
+import { NavbarComponent } from './recipes/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     routingComponents,
     LoginComponent,
     RegisterComponent,
@@ -26,7 +28,7 @@ import { ProfileComponent } from './users/profile/profile.component';
     HttpClientModule,
     ClarityModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
 
   ],
   providers: [RecipeService],
