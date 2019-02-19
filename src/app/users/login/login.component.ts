@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { RecipeService } from 'src/app/services/recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,19 @@ export class LoginComponent implements OnInit {
 
   public error = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private recipe: RecipeService, private router: Router) { }
 
   onSubmit() {
-    return this.http.post('http://recipe-app.test/api/login', this.form)
+    this.recipe.login(this.form)
     .subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error)
     );
+  }
+
+  handleResponse(data) {
+    this.recipe.handle(data.access_token);
+    this.router.navigateByUrl('profile');
   }
 
   handleError(error) {

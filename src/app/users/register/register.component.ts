@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-register',
@@ -17,11 +17,10 @@ export class RegisterComponent implements OnInit {
 
   public error = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private recipe: RecipeService) { }
 
   onSubmit() {
-    return this.http.post('http://recipe-app.test/api/register', this.form)
-    .subscribe(
+    this.recipe.register(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error)
     );
