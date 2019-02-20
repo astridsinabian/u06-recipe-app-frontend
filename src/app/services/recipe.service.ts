@@ -25,9 +25,14 @@ export class RecipeService {
 
   constructor(private http:HttpClient) { }
 
-  getRecipe():Observable<RecipeSearchResult> {
+  getRecipe(): Observable<RecipeSearchResult> {
     return this.http.get<RecipeSearchResult>(this.recipesUrl);
   }
+
+  getRecipeById(recipeId: string): Observable<RecipeSearchResult> {
+    return this.http.get<RecipeSearchResult>(`http://api.yummly.com/v1/api/recipe/${recipeId}?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6`);
+  }
+
 
   register(data) {
     return this.http.post(`${this.userUrl}/register`, data)

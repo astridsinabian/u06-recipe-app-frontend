@@ -1,3 +1,18 @@
-
-    <h3>You've selected: {{ recipeId }}</h3>
-
+<div class="card" *ngIf="recipes">
+        <div class="card-img">
+            <img src="{{ recipes.images[0].hostedLargeUrl }}">
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{ recipes.name }}</h4>
+            <p class="card-text">
+                   {{ recipes.attributes.course }} 
+            </p>
+        </div>
+        <div>
+            {{ recipes.ingredientLines }}
+        </div>
+        <div class="card-footer">
+            <button href="#" class="btn btn-primary">Add to list</button>
+            <button routerLink="/recipes" class="btn btn-primary">Back</button>
+        </div>
+    </div>
