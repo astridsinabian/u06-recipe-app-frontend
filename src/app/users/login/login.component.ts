@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   public error = null;
 
-  constructor(private recipe: RecipeService, private router: Router) { }
+  constructor(private recipe: RecipeYummlyService, private router: Router) { }
 
   onSubmit() {
     this.recipe.login(this.form)

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from 'src/app/models/Recipe';
+import { Recipe, RecipeSearchResult } from 'src/app/models/Recipe';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,10 +15,17 @@ export class RecipesDetailsComponent implements OnInit {
   @Input() recipe: Recipe;
   recipes;
   recipeId;
+  recipesUrl;
+  
+
+  loggedIn() {
+    return this.recipeService.isValid();
+  }
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService,
+    private recipeService: RecipeYummlyService,
+    private router: Router
   ) {
     this.recipeId = this.route.snapshot.paramMap.get('id');
   }
@@ -34,6 +42,14 @@ export class RecipesDetailsComponent implements OnInit {
     })
 
   }
+
+  addRecipeToList(){
+    this.router.navigateByUrl('profile');
+    console.log("add list");
+  }
  
+
+ 
+
 
 }

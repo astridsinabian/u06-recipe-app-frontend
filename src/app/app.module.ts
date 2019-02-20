@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { RecipeService } from './services/recipe.service';
+import { RecipeYummlyService } from './services/recipe-yummly.service';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -31,7 +31,7 @@ import { NavbarComponent } from './recipes/navbar/navbar.component';
     FormsModule,
 
   ],
-  providers: [RecipeService],
+  providers: [RecipeYummlyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

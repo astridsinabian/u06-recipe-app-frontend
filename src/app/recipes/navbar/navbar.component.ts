@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../../services/recipe.service';
+import { RecipeYummlyService } from '../../services/recipe-yummly.service';
 import { Router } from '@angular/router';
 
 
@@ -12,7 +12,9 @@ export class NavbarComponent implements OnInit {
 
   public loggedIn : boolean;
 
-  constructor(private recipe: RecipeService, private router: Router) { }
+  title:string = 'Recipe App';
+
+  constructor(private recipe: RecipeYummlyService, private router: Router) { }
 
   ngOnInit() {
     this.recipe.authStatus

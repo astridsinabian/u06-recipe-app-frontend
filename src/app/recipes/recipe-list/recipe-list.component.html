@@ -1,31 +1,72 @@
 <clr-main-container>
-<div>
-                <input [(ngModel)]="searchString" />
-                <button (click)="search()">search</button>
 
+    <div>
+    <div class="clr-row search-div">
+        <button (click)="search()" class="clr-col-0 btn btn-icon">
+            <clr-icon shape="search"></clr-icon>
+        </button>
+      <input [(ngModel)]="searchString" class="clr-col search-input" placeholder="Search for recipes here..."/>
+    </div>
+
+    <div class="clr-form-control">
+            <label class="clr-control-label">Filter search</label>
+            <div class="clr-control-container clr-control-inline">
+              <div class="clr-checkbox-wrapper">
+                <input type="checkbox" id="vertical-checkbox1" name="checkbox-full" value="option1" class="clr-checkbox">
+                <label for="vertical-checkbox1" class="clr-control-label">Gluten free</label>
+              </div>
+              <div class="clr-checkbox-wrapper">
+                <input type="checkbox" id="vertical-checkbox2" name="checkbox-full" value="option2" class="clr-checkbox">
+                <label for="vertical-checkbox2" class="clr-control-label">Lactose</label>
+              </div>
+              <div class="clr-checkbox-wrapper">
+                <input type="checkbox" id="vertical-checkbox3" name="checkbox-full" value="option3" class="clr-checkbox">
+                <label for="vertical-checkbox3" class="clr-control-label">Vegetarian</label>
+              </div>
+
+              <div class="clr-radio-wrapper">
+                    <input type="radio" id="vertical-radio1" name="radio-full" value="option1" class="clr-radio">
+                    <label for="vertical-radio1" class="clr-control-label">Starters</label>
+                  </div>
+                  <div class="clr-radio-wrapper">
+                    <input type="radio" id="vertical-radio2" name="radio-full" value="option2" class="clr-radio">
+                    <label for="vertical-radio2" class="clr-control-label">Main dishes</label>
+                  </div>
+                  <div class="clr-radio-wrapper">
+                    <input type="radio" id="vertical-radio3" name="radio-full" value="option3" class="clr-radio">
+                    <label for="vertical-radio3" class="clr-control-label">Desserts</label>
+                  </div>
             </div>
-    <h1>Recipes</h1>
+
+          </div>
+
+       
+
+</div>
    
     <div *ngIf="recipes">
     <div class="clr-row">
-        <div class="clr-col-lg-3 clr-col-6" *ngFor="let recipe of recipes">
+        <div class="col-sm-12 col-md-6 clr-col-lg-3 recipe-list" *ngFor="let recipe of recipes">
             <a class="card clickable" routerLink="/recipes/{{recipe.id}}">
                 <div class="card-img">
                     <img src="{{ recipe.smallImageUrls }}">
                 </div>
                 <div class="card-block">
-                    <p class="card-text">{{ recipe.recipeName }}<br>
-                    <strong>id:</strong> {{ recipe.id }}
-                    </p>
-
+                    <p class="card-text"><strong>Recipe name:</strong> {{ recipe.recipeName }}</p>
+                    <p class="card-text"><strong>Rating:</strong> {{ recipe.rating }}</p>
                 </div>
             </a>
         </div>
     </div> 
 
 </div>
-
-
+<div>
+<footer>
+        <div class="footer-div"> Recipe App made by Astrid Sinabian</div>
+</footer>
+</div>
 
 </clr-main-container>
+
+
 

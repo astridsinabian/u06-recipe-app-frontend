@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../../services/recipe.service';
+import { RecipeYummlyService } from '../../services/recipe-yummly.service';
 
 import { Recipe, RecipeSearchResult } from '../../models/Recipe';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class RecipeListComponent implements OnInit {
   recipeId;
   
   constructor(
-    private recipeService:RecipeService, 
+    private recipeService:RecipeYummlyService, 
     private router: Router,
     private http: HttpClient
     ) { }
@@ -37,7 +37,7 @@ export class RecipeListComponent implements OnInit {
   search() {
     // let query = this.recipesUrl + '&q=' + this.searchString;
     // this.http.get(query).subscribe((result) => {
-    //   this.recipes = result.matches
+    // this.recipes = result.matches
     // });
 
      }

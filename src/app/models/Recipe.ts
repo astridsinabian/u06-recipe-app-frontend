@@ -8,6 +8,7 @@ export class Recipe {
     ingredients:string;
     smallImageUrls:string;
     totalTimeInSeconds:number;
-    rating:number
+    rating:number;
+    attributes: string;
 }
 
