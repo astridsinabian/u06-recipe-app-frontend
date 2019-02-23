@@ -41,5 +41,12 @@ export class RecipeListComponent implements OnInit {
     // });
 
      }
+    
+  filterAppetizers() {
+    // let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Appetizers`;
+    // this.http.get(query).subscribe((result) => {
+    // this.recipes = result.matches
+    // });
+  }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { RecipeSearchResult } from '../models/Recipe';
+import { RecipeSearchResult, Recipe } from '../models/Recipe';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable({
@@ -29,10 +29,13 @@ export class RecipeYummlyService {
     return this.http.get<RecipeSearchResult>(this.recipesUrl);
   }
 
-  getRecipeById(recipeId: string): Observable<RecipeSearchResult> {
-    return this.http.get<RecipeSearchResult>(`http://api.yummly.com/v1/api/recipe/${recipeId}?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6`);
+  getRecipeById(recipeId: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`http://api.yummly.com/v1/api/recipe/${recipeId}?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6`);
   }
 
+  getRecipeByCourse(): Observable<RecipeSearchResult> {
+    return this.http.get<RecipeSearchResult>(`${this.recipesSearchUrl}&allowedCourse[]=course^course-Appetizers`);
+  }
 
   register(data) {
     return this.http.post(`${this.userUrl}/register`, data)

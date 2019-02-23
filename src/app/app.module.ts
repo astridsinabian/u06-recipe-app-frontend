@@ -12,6 +12,8 @@ import { LoginComponent } from './users/login/login.component';
 import { RegisterComponent } from './users/register/register.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { NavbarComponent } from './recipes/navbar/navbar.component';
+import { SavedComponent } from './recipes/saved/saved.component';
+import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NavbarComponent } from './recipes/navbar/navbar.component';
     routingComponents,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    SavedComponent,
+    NotFoundComponentComponent
   ],
   imports: [
     BrowserModule,

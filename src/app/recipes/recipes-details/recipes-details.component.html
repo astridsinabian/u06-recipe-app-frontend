@@ -1,19 +1,19 @@
 <clr-main-container>
-<div class="card" *ngIf="recipes">
+<div class="card" *ngIf="recipe">
         <div class="card-img">
-            <img src="{{ recipes.images[0].hostedLargeUrl }}">
+            <img src="{{ recipe.images[0].hostedLargeUrl }}">
         </div>
         <div class="card-block">
-            <h4 class="card-title">{{ recipes.name }}</h4>
+            <h4 class="card-title">{{ recipe.name }}</h4>
             <p class="card-text">
-                   {{ recipes.attributes.course }} 
+                   {{ recipe.attributes.course }} 
             </p>
         </div>
         <div class="ingredientLines">
-            {{ recipes.ingredientLines }}
+            {{ recipe.ingredientLines }}
         </div>
         <div class="card-footer">
-            <button (click)="addRecipeToList()" *ngIf="loggedIn" class="btn btn-primary">Add to list</button>
+            <button (click)=addRecipes() *ngIf="loggedIn" class="btn btn-primary">Add to list</button>
             <button routerLink="/recipes" class="btn btn-primary">Back</button>
         </div>
     </div>

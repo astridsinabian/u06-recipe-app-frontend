@@ -1,0 +1,20 @@
+<div class="clr-row">
+  <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12">
+      <div class="card">
+          <div class="card-header">
+              List #1
+              
+          </div>
+          <div class="card-block">
+              <ul class="list">
+                  <li *ngFor="let recipe of savedRecipe">
+                      {{ recipe.name }}
+                      <button class="btn btn-primary">x</button></li>
+              </ul>
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-danger">Delete List</a>
+          </div>
+      </div>
+  </div>
+</div>
