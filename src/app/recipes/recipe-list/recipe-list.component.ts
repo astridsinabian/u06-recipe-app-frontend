@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeYummlyService } from '../../services/recipe-yummly.service';
+import { Recipe } from '../../models/Recipe';
+import { HttpClient } from '@angular/common/http';
 
-import { Recipe, RecipeSearchResult } from '../../models/Recipe';
-import { Router } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -21,7 +19,6 @@ export class RecipeListComponent implements OnInit {
   
   constructor(
     private recipeService:RecipeYummlyService, 
-    private router: Router,
     private http: HttpClient
     ) { }
 
@@ -35,18 +32,56 @@ export class RecipeListComponent implements OnInit {
   }
 
   search() {
-    // let query = this.recipesUrl + '&q=' + this.searchString;
-    // this.http.get(query).subscribe((result) => {
-    // this.recipes = result.matches
-    // });
+    let query = this.recipesUrl + '&q=' + this.searchString;
+    this.http.get(query).subscribe((result) => {
+    this.recipes = result.matches
+    });
 
      }
     
-  filterAppetizers() {
-    // let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Appetizers`;
-    // this.http.get(query).subscribe((result) => {
-    // this.recipes = result.matches
-    // });
+  filterAppetizers(e) {
+    if(e.target.checked) {
+     let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Appetizers`;
+     this.http.get(query).subscribe((result) => {
+     this.recipes = result.matches
+     });
+    }
+  }
+
+  filterMainDishes(e) {
+    if(e.target.checked) {
+     let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Maindishes`;
+     this.http.get(query).subscribe((result) => {
+     this.recipes = result.matches
+     });
+    }
+  }
+
+  filterDesserts(e) {
+    if(e.target.checked) {
+     let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Desserts`;
+     this.http.get(query).subscribe((result) => {
+     this.recipes = result.matches
+     });
+    }
+  }
+
+  filterGluten(e) {
+    if(e.target.checked) {
+     let query = `${this.recipesUrl}&q=${this.searchString}&allowedAllergy[]=396^Dairy-Free&allowedAllergy[]=393^Gluten-Free`;
+     this.http.get(query).subscribe((result) => {
+     this.recipes = result.matches
+     });
+    }
+  }
+
+  filterVegetarian(e) {
+    if(e.target.checked) {
+     let query = `${this.recipesUrl}&q=${this.searchString}&allowedDiet[]=390^Pescetarian&allowedDiet[]=388^Vegetarian`;
+     this.http.get(query).subscribe((result) => {
+     this.recipes = result.matches
+     });
+    }
   }
 
 }

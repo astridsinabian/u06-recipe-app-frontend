@@ -60,10 +60,5 @@ export class RecipesDetailsComponent implements OnInit {
     });
   }
 
- 
- 
-
- 
-
 
 }
