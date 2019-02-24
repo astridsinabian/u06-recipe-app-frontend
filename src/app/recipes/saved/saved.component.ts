@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SavedRecipe } from 'src/app/models/SavedRecipe';
 import { RecipesService } from 'src/app/services/recipes.service';
+import { Recipe } from 'src/app/models/Recipe';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { RecipesService } from 'src/app/services/recipes.service';
 export class SavedComponent implements OnInit {
 
   savedRecipe: SavedRecipe[];
-  editSavedRecipe: SavedRecipe;
+  selectedRecipe;
 
   constructor(private recipeService: RecipesService) { }
 
@@ -21,6 +22,14 @@ export class SavedComponent implements OnInit {
 
   getRecipes(): void {
      this.recipeService.getRecipes().subscribe(savedRecipe => (this.savedRecipe = savedRecipe))
+  }
+
+  deleteRecipe(id: string) {
+     this.selectedRecipe = id;
+    this.recipeService.deleteRecipes(id)
+     .subscribe(result => {
+       return this.getRecipes();
+     });
   }
 
 }

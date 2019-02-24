@@ -9,7 +9,7 @@
               <ul class="list">
                   <li *ngFor="let recipe of savedRecipe">
                       {{ recipe.name }}
-                      <button class="btn btn-primary">x</button></li>
+                      <button class="btn btn-primary" (click)="deleteRecipe(recipe.id)">x</button></li>
               </ul>
           </div>
           <div class="card-footer">
