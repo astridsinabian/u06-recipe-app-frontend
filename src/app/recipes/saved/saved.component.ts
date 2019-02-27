@@ -13,6 +13,7 @@ export class SavedComponent implements OnInit {
 
   savedRecipe: SavedRecipe[];
   selectedRecipe;
+  listId;
 
   constructor(private recipeService: RecipesService) { }
 

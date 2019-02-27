@@ -26,7 +26,7 @@ export class RecipeListComponent implements OnInit {
     this.recipeService
     .getRecipe()
     .subscribe((result) => {
-      this.recipes = result.matches
+      this.recipes = (<any>result).matches
     });
 
   }
@@ -34,7 +34,7 @@ export class RecipeListComponent implements OnInit {
   search() {
     let query = this.recipesUrl + '&q=' + this.searchString;
     this.http.get(query).subscribe((result) => {
-    this.recipes = result.matches
+    this.recipes = (<any>result).matches
     });
 
      }
@@ -43,7 +43,7 @@ export class RecipeListComponent implements OnInit {
     if(e.target.checked) {
      let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Appetizers`;
      this.http.get(query).subscribe((result) => {
-     this.recipes = result.matches
+     this.recipes = (<any>result).matches
      });
     }
   }
@@ -52,7 +52,7 @@ export class RecipeListComponent implements OnInit {
     if(e.target.checked) {
      let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Maindishes`;
      this.http.get(query).subscribe((result) => {
-     this.recipes = result.matches
+     this.recipes = (<any>result).matches
      });
     }
   }
@@ -61,7 +61,7 @@ export class RecipeListComponent implements OnInit {
     if(e.target.checked) {
      let query = `${this.recipesUrl}&q=${this.searchString}&allowedCourse[]=course^course-Desserts`;
      this.http.get(query).subscribe((result) => {
-     this.recipes = result.matches
+     this.recipes = (<any>result).matches
      });
     }
   }
@@ -70,7 +70,7 @@ export class RecipeListComponent implements OnInit {
     if(e.target.checked) {
      let query = `${this.recipesUrl}&q=${this.searchString}&allowedAllergy[]=396^Dairy-Free&allowedAllergy[]=393^Gluten-Free`;
      this.http.get(query).subscribe((result) => {
-     this.recipes = result.matches
+     this.recipes = (<any>result).matches
      });
     }
   }
@@ -79,7 +79,7 @@ export class RecipeListComponent implements OnInit {
     if(e.target.checked) {
      let query = `${this.recipesUrl}&q=${this.searchString}&allowedDiet[]=390^Pescetarian&allowedDiet[]=388^Vegetarian`;
      this.http.get(query).subscribe((result) => {
-     this.recipes = result.matches
+     this.recipes = (<any>result).matches
      });
     }
   }

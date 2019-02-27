@@ -5,11 +5,12 @@
               Recipe List
           </div>
           <div class="card-block">
-              <ul class="list">
-                  <li *ngFor="let recipe of savedRecipe">
+              <div class="list">
+                  <div class="recipe-list" *ngFor="let recipe of savedRecipe">
                       {{ recipe.name }}
-                      <button class="btn btn-primary" (click)="deleteRecipe(recipe.id)">x</button></li>
-              </ul>
+                      <div><button class="btn btn-primary" (click)="deleteRecipe(recipe.id)">x</button></div>
+                </div>
+            </div>
           </div>
           <div class="card-footer">
           </div>

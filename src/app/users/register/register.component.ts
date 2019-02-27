@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   handleResponse(data) {
-    this.recipe.handle(data.access_token);
+    this.recipe.handle(data.access_token, data.user.email);
     this.router.navigateByUrl('profile');
   }
 

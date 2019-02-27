@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class RecipeYummlyService {
 
+
   recipesUrl:string = 'http://api.yummly.com/v1/api/recipes?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6';
 
   recipesSearchUrl: string = 'http://api.yummly.com/v1/api/recipes?_app_id=7e6d90e7&_app_key=f2b54716a627719e4b1fa6ac962e6ac6&q=';
@@ -41,8 +42,9 @@ export class RecipeYummlyService {
     return this.http.post(`${this.userUrl}/login`, data)
   }
 
-  handle(token) {
+  handle(token, email) {
     this.set(token);
+    this.setEmail(email);
     
   }
 
@@ -87,6 +89,16 @@ export class RecipeYummlyService {
     this.loggedInView.next(value);
   }
 
+  getEmail() {
+    return localStorage.getItem('email');
+  }
   
+  setEmail(email) {
+    localStorage.setItem('email', email);
+  }
+
+  removeEmail() {
+    localStorage.removeItem('email');
+  }
 
 }

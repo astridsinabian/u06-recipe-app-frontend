@@ -15,7 +15,7 @@ import { SavedRecipe } from 'src/app/models/SavedRecipe';
 export class RecipesDetailsComponent implements OnInit {
 
 
-  recipe: Recipe
+  recipe: Recipe;
   recipeId;
   recipesUrl;
 
@@ -50,8 +50,11 @@ export class RecipesDetailsComponent implements OnInit {
   }
 
   addRecipes() {
+
+    console.log('Add to list!');
     const recipeAddToList = new SavedRecipe();
     recipeAddToList.name = this.recipe.name;
+    recipeAddToList.email = this.recipeYummlyService.getEmail();
 
     this.http.post('http://recipe-app.test/api/recipelists', recipeAddToList)
     .subscribe(result => {

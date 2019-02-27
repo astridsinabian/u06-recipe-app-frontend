@@ -13,7 +13,7 @@ export class Recipe {
     rating:number;
     attributes: RecipeAttributes;
     images: RecipeImage[];
-
+    email: string;
 }
 
 export class RecipeAttributes {

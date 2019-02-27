@@ -1,0 +1,8 @@
+.recipe-list {
+    display: flex;
+}
+
+.btn .btn-primary {
+    display: flex;
+    justify-content: flex-end;
+}
