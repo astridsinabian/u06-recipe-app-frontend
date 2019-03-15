@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SavedRecipe } from 'src/app/models/SavedRecipe';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { Recipe } from 'src/app/models/Recipe';
+import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
 
 
 @Component({
@@ -13,16 +14,22 @@ export class SavedComponent implements OnInit {
 
   savedRecipe: SavedRecipe[];
   selectedRecipe;
-  listId;
 
-  constructor(private recipeService: RecipesService) { }
+  constructor(private recipeService: RecipesService, private recipeYummlyService: RecipeYummlyService) { }
 
   ngOnInit() {
    this.getRecipes();
   }
 
   getRecipes(): void {
-     this.recipeService.getRecipes().subscribe(savedRecipe => (this.savedRecipe = savedRecipe))
+     let email = this.recipeYummlyService.getEmail();
+     this.recipeService.getRecipes(email).subscribe(data => {
+       let arr = [];
+      for (let i = 0; i < 100; i++) {
+        if(data[i] != undefined) arr.push(data[i]);
+      }
+      this.savedRecipe = arr;
+     }); 
   }
 
   deleteRecipe(id: string) {

@@ -1,19 +1,20 @@
 <div class="clr-row">
-  <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12">
       <div class="card">
           <div class="card-header">
               Recipe List
           </div>
           <div class="card-block">
               <div class="list">
-                  <div class="recipe-list" *ngFor="let recipe of savedRecipe">
-                      {{ recipe.name }}
-                      <div><button class="btn btn-primary" (click)="deleteRecipe(recipe.id)">x</button></div>
+                    <div class="recipe-list" *ngFor="let recipe of savedRecipe">
+                        <div class="added-recipe"> {{ recipe.name }}</div>
+                        <div class="button-container">
+                            <button type="button" class="btn btn-icon btn-warning" (click)="deleteRecipe(recipe.id)">
+                                <clr-icon shape="trash"></clr-icon>
+                            </button>
+                        </div>
                 </div>
             </div>
           </div>
-          <div class="card-footer">
-          </div>
+    
       </div>
   </div>
-</div>

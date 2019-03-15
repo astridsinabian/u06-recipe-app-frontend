@@ -14,7 +14,9 @@
         </div>
         <div class="card-footer">
             <button (click)=addRecipes() *ngIf="loggedIn" class="btn btn-primary">Add to list</button>
-            <button routerLink="/recipes" class="btn btn-primary">Back</button>
+            <button type="button" routerLink="/recipes"class="btn btn-icon btn-primary">
+                <clr-icon shape="undo"></clr-icon>
+            </button>
         </div>
     </div>
 

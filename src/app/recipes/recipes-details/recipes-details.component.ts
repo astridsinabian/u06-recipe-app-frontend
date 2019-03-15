@@ -5,6 +5,7 @@ import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SavedRecipe } from 'src/app/models/SavedRecipe';
+import { RecipesService } from 'src/app/services/recipes.service';
 
 
 @Component({
@@ -17,11 +18,8 @@ export class RecipesDetailsComponent implements OnInit {
 
   recipe: Recipe;
   recipeId;
-  recipesUrl;
-
 
   
-
   loggedIn() {
     return this.recipeYummlyService.isValid();
   }
@@ -30,16 +28,16 @@ export class RecipesDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private recipeYummlyService: RecipeYummlyService,
     private router: Router,
-    private http: HttpClient,
+    private recipeservice: RecipesService,
   ) {
     this.recipeId = this.route.snapshot.paramMap.get('id');
   }
  
   ngOnInit(): void {
+
    this.getRecipeById();
    
   }
-
 
   getRecipeById() {
     this.recipeYummlyService.getRecipeById(this.recipeId)
@@ -50,15 +48,12 @@ export class RecipesDetailsComponent implements OnInit {
   }
 
   addRecipes() {
-
-    console.log('Add to list!');
     const recipeAddToList = new SavedRecipe();
     recipeAddToList.name = this.recipe.name;
     recipeAddToList.email = this.recipeYummlyService.getEmail();
 
-    this.http.post('http://recipe-app.test/api/recipelists', recipeAddToList)
+    this.recipeservice.addRecipes(recipeAddToList)
     .subscribe(result => {
-      this.getRecipeById();
       this.router.navigateByUrl('/profile');
     });
   }

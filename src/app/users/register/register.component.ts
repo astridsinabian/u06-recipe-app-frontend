@@ -16,7 +16,9 @@ export class RegisterComponent implements OnInit {
     password_confirmation: null
   }
 
-  public error = [];
+  public error: {
+    error: string
+  };
 
   constructor(private recipe: RecipeYummlyService, private router: Router) { }
 
