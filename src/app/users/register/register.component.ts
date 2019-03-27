@@ -14,11 +14,9 @@ export class RegisterComponent implements OnInit {
     name: null,
     password: null,
     password_confirmation: null
-  }
-
-  public error: {
-    error: string
   };
+
+  public error = [];
 
   constructor(private recipe: RecipeYummlyService, private router: Router) { }
 
@@ -31,6 +29,7 @@ export class RegisterComponent implements OnInit {
 
   handleResponse(data) {
     this.recipe.handle(data.access_token, data.user.email, data.user.id);
+    this.recipe.changeAuthStatus(true);
     this.router.navigateByUrl('profile');
   }
 

@@ -16,12 +16,16 @@ export class RecipesService {
    }
 
   addRecipes(savedRecipe: SavedRecipe): any {
-     debugger;
      return this.http.post<SavedRecipe[]>('http://recipe-app.test/api/recipelists/add', savedRecipe);
   } 
 
    deleteRecipes(id: string): Observable<{}> {
       const url = `http://recipe-app.test/api/recipelists/${id}`;
+      return this.http.delete(url);
+   } 
+
+   deleteLists(id: number): Observable<{}> {
+      const url = `http://recipe-app.test/api/profilelist/add/${id}`;
       return this.http.delete(url);
    } 
 

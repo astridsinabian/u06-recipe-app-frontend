@@ -16,8 +16,7 @@ export class SavedComponent implements OnInit {
   savedRecipe: SavedRecipe[];
   profilelists: Profilelist[];
   selectedRecipe;
-  list_id;
-  user_id;
+  selectedList;
 
   constructor(private recipeService: RecipesService, private recipeYummlyService: RecipeYummlyService) { }
 
@@ -51,6 +50,7 @@ export class SavedComponent implements OnInit {
     profilelist.name = event.name.value;
     profilelist.email = this.recipeYummlyService.getEmail();
     this.recipeService.createNewList(profilelist).subscribe(result => {
+      this.getProfilelist();
     });
  
   }
@@ -71,8 +71,11 @@ export class SavedComponent implements OnInit {
     console.log("Edit list name!");
   }
 
-  deleteList() {
-    console.log("Delete list!");
+  deleteList(id: number) {
+    this.selectedList = id;
+    this.recipeService.deleteLists(id).subscribe(result => {
+      this.getProfilelist();
+    });
   }
 
 }

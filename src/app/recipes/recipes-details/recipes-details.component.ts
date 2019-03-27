@@ -43,6 +43,7 @@ export class RecipesDetailsComponent implements OnInit {
   }
 
   getRecipeById() {
+    
     this.recipeYummlyService.getRecipeById(this.recipeId)
     .subscribe(data => {
       this.recipe = data;
@@ -51,20 +52,23 @@ export class RecipesDetailsComponent implements OnInit {
   }
 
   getListByEmail() {
+
     this.recipeservice.getProfilelists(this.email)
     .subscribe(data => {
       this.recipe = data;
     })
+
   }
 
   addRecipes(list_id: number) {
+
     const recipeAddToList = new SavedRecipe();
     recipeAddToList.name = this.recipe.name;
     recipeAddToList.email = this.recipeYummlyService.getEmail();
     recipeAddToList.list_id = list_id;
+
     this.recipeservice.addRecipes(recipeAddToList)
     .subscribe(result => {
-      console.log(result);
       this.router.navigateByUrl('/profile');
     });
 
@@ -73,13 +77,19 @@ export class RecipesDetailsComponent implements OnInit {
   
   getProfilelist(): void {
     let email = this.recipeYummlyService.getEmail();
+
     this.recipeservice.getProfilelists(email).subscribe(data => {
-      console.log(data);
-       let arr = [];
+
+      let arr = [];
+
       for (let i = 0; i < 100; i++) {
+        
         if(data[i] != undefined) arr.push(data[i]);
+
       }
+
       this.profilelists = arr;
+
      }); 
   }
 
