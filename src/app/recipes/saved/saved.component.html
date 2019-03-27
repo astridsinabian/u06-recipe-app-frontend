@@ -1,20 +1,57 @@
+<form (ngSubmit)="onSubmit($event.target)">
+    <div id="create-list-form">
+        <label class="list-label">Create new list</label>
+            <div>
+                <input type="text" name="name" class="input-list-name" placeholder="List name">
+                <input type="submit" value="submit" class="btn btn-icon btn-success">
+            </div>
+    </div>
+</form>
+
 <div class="clr-row">
-      <div class="card">
-          <div class="card-header">
-              Recipe List
-          </div>
-          <div class="card-block">
-              <div class="list">
-                    <div class="recipe-list" *ngFor="let recipe of savedRecipe">
-                        <div class="added-recipe"> {{ recipe.name }}</div>
-                        <div class="button-container">
-                            <button type="button" class="btn btn-icon btn-warning" (click)="deleteRecipe(recipe.id)">
-                                <clr-icon shape="trash"></clr-icon>
-                            </button>
-                        </div>
+    <div *ngFor="let profilelist of profilelists" class="clr-col-lg-4 clr-col-sm-6 clr-col-12 list">
+        <div class="card">
+            <div class="card-header">
+                {{ profilelist.name }}
+            </div>
+            <div class="card-block">
+                <ul class="list-unstyled" >
+                    <div *ngFor="let recipe of savedRecipe">
+                    <li *ngIf="profilelist.id == recipe.list_id" class="recipe-list" >
+                        {{ recipe.name }} 
+                        <button type="button" class="btn btn-icon btn-sm btn-warning" (click)="deleteRecipe(recipe.id)">
+                            <clr-icon shape="trash"></clr-icon>
+                        </button>
+                    </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group btn-primary">
+                    <button class="btn btn-primary" (click)="editListName()">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteList()">Delete</button>
                 </div>
             </div>
-          </div>
-    
-      </div>
-  </div>
+        </div>
+    </div>
+    <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12 list">
+            <div class="card">
+                <div class="card-header">
+                    List #2
+                </div>
+                <div class="card-block">
+                    <ul class="list-unstyled">
+                        <li>Ullamco Laboris</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group btn-primary">
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</div>
+               

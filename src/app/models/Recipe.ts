@@ -14,6 +14,7 @@ export class Recipe {
     attributes: RecipeAttributes;
     images: RecipeImage[];
     email: string;
+    list_id: number;
 }
 
 export class RecipeAttributes {

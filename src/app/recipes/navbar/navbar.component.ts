@@ -26,6 +26,8 @@ export class NavbarComponent implements OnInit {
   logout(event: MouseEvent) {
     event.preventDefault();
     this.recipe.remove();
+    this.recipe.removeEmail();
+    this.recipe.removeUserId();
     this.recipe.changeAuthStatus(false);
     this.router.navigateByUrl('login');
   }

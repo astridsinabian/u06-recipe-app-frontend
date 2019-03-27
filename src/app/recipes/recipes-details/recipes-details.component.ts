@@ -2,10 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe, RecipeSearchResult } from 'src/app/models/Recipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { HttpClient } from '@angular/common/http';
 import { SavedRecipe } from 'src/app/models/SavedRecipe';
 import { RecipesService } from 'src/app/services/recipes.service';
+import { Profilelist } from 'src/app/models/Profilelist';
 
 
 @Component({
@@ -18,11 +19,12 @@ export class RecipesDetailsComponent implements OnInit {
 
   recipe: Recipe;
   recipeId;
+  email;
+  list_id;
+  id;
+  profilelists: Profilelist[];
 
-  
-  loggedIn() {
-    return this.recipeYummlyService.isValid();
-  }
+  addRecipeModal = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +38,7 @@ export class RecipesDetailsComponent implements OnInit {
   ngOnInit(): void {
 
    this.getRecipeById();
+   this.getProfilelist();
    
   }
 
@@ -47,16 +50,37 @@ export class RecipesDetailsComponent implements OnInit {
 
   }
 
-  addRecipes() {
+  getListByEmail() {
+    this.recipeservice.getProfilelists(this.email)
+    .subscribe(data => {
+      this.recipe = data;
+    })
+  }
+
+  addRecipes(list_id: number) {
     const recipeAddToList = new SavedRecipe();
     recipeAddToList.name = this.recipe.name;
     recipeAddToList.email = this.recipeYummlyService.getEmail();
-
+    recipeAddToList.list_id = list_id;
     this.recipeservice.addRecipes(recipeAddToList)
     .subscribe(result => {
+      console.log(result);
       this.router.navigateByUrl('/profile');
     });
+
   }
 
+  
+  getProfilelist(): void {
+    let email = this.recipeYummlyService.getEmail();
+    this.recipeservice.getProfilelists(email).subscribe(data => {
+      console.log(data);
+       let arr = [];
+      for (let i = 0; i < 100; i++) {
+        if(data[i] != undefined) arr.push(data[i]);
+      }
+      this.profilelists = arr;
+     }); 
+  }
 
 }
