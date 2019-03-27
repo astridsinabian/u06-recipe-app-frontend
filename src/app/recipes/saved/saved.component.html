@@ -1,3 +1,4 @@
+<div class="saved-view">
 <form (ngSubmit)="onSubmit($event.target)">
     <div id="create-list-form">
         <label class="list-label">Create new list</label>
@@ -13,7 +14,7 @@
         <div class="card">
             <div class="card-header">
                 {{ profilelist.name }}
-            </div>
+            </div> 
             <div class="card-block">
                 <ul class="list-unstyled" >
                     <div *ngFor="let recipe of savedRecipe">
@@ -28,30 +29,11 @@
             </div>
             <div class="card-footer">
                 <div class="btn-group btn-primary">
-                    <button class="btn btn-primary" (click)="editListName()">Edit</button>
                     <button class="btn btn-danger" (click)="deleteList(profilelist.id)">Delete</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12 list">
-            <div class="card">
-                <div class="card-header">
-                    List #2
-                </div>
-                <div class="card-block">
-                    <ul class="list-unstyled">
-                        <li>Ullamco Laboris</li>
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-group btn-primary">
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
 </div>
-               
+
+

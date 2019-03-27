@@ -24,6 +24,10 @@ export class RecipesService {
       return this.http.delete(url);
    } 
 
+   getProfilelists(email: string): any {
+      return this.http.get<Profilelist[]>(`http://recipe-app.test/api/profilelist/${email}`);
+   }
+
    deleteLists(id: number): Observable<{}> {
       const url = `http://recipe-app.test/api/profilelist/add/${id}`;
       return this.http.delete(url);
@@ -31,10 +35,6 @@ export class RecipesService {
 
    createNewList(profilelist: Profilelist): any {
       return this.http.post<Profilelist[]>('http://recipe-app.test/api/profilelist/add', profilelist);
-   }
-
-   getProfilelists(email: string): any {
-      return this.http.get<Profilelist[]>(`http://recipe-app.test/api/profilelist/${email}`);
    }
 
 }

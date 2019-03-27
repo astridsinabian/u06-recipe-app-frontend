@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SavedRecipe } from 'src/app/models/SavedRecipe';
 import { RecipesService } from 'src/app/services/recipes.service';
-// import { Recipe } from 'src/app/models/Recipe';
 import { RecipeYummlyService } from 'src/app/services/recipe-yummly.service';
 import { Profilelist } from 'src/app/models/Profilelist';
 
@@ -65,10 +64,6 @@ export class SavedComponent implements OnInit {
       }
       this.profilelists = arr;  
     });
-  }
-
-  editListName() {
-    console.log("Edit list name!");
   }
 
   deleteList(id: number) {

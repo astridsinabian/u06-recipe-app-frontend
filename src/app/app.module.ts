@@ -14,6 +14,7 @@ import { ProfileComponent } from './users/profile/profile.component';
 import { NavbarComponent } from './recipes/navbar/navbar.component';
 import { SavedComponent } from './recipes/saved/saved.component';
 import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
+import { HomeComponent } from './recipes/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NotFoundComponentComponent } from './not-found-component/not-found-comp
     RegisterComponent,
     ProfileComponent,
     SavedComponent,
+    HomeComponent,
     NotFoundComponentComponent
   ],
   imports: [
